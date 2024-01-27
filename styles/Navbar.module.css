@@ -1,0 +1,94 @@
+.navbar {
+    background-color: rgba(19, 19, 19, 0.5);
+    position: fixed;
+    top: 0;
+    width: 94%;
+    z-index: 1000;
+    transition: background-color 0.3s ease-in-out;
+    padding: 0 4em; /* Added padding to both right and left */
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0; /* Adjusted padding */
+  }
+  
+  .navbar-left,
+  .navbar-center,
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-left {
+    margin-right: 10px; /* Adjusted margin to create space between icon and heading */
+    font-weight: 600;
+  }
+  
+  .github-icon {
+    font-size: 24px;
+    color: white;
+  }
+  
+  .navbar-heading {
+    color: white;
+    font-size: 18px;
+  }
+  
+  .navbar-center {
+    display: flex;
+    justify-content: center; /* Centering the options */
+    flex-grow: 1; /* Takes up available space to push the options to the center */
+  }
+  
+  .navbar-center a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar-center a:hover {
+    color: #61dafb;
+  }
+  
+  .search-bar {
+    width: 8em;
+    height: 2em;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    margin-right: 10px;
+    padding: 0 1em;
+    background-color: #292929;
+    border: 2px solid rgb(65, 65, 65);
+    outline: none;
+    color: aliceblue;
+  }
+  
+  .search-bar::Placeholder {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+  }
+  
+  /* Responsive styles */
+  
+  @media screen and (max-width: 768px) {
+    .navbar-container {
+      flex-direction: column;
+      padding: 10px; /* Adjusted padding for responsiveness */
+    }
+  
+    .navbar-left,
+    .navbar-center,
+    .navbar-right {
+      margin: 10px 0;
+    }
+  
+    .navbar-center a {
+      margin: 5px 0;
+    }
+  } 

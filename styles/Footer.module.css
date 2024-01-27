@@ -1,0 +1,33 @@
+.footer {
+    background-color: #13131388;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+  
+  .footerContent {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+  }
+  
+  .copyright {
+    font-size: 14px;
+  }
+  
+  .ownership {
+    font-size: 12px;
+  }
+  
+  /* Responsive styles */
+  
+  @media screen and (max-width: 768px) {
+    .footerContent {
+      flex-direction: column;
+    }
+  }

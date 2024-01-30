@@ -8,3 +8,7 @@ body {
   background-size: cover; */
   background-color: aliceblue;
 }
+
+a {
+  text-decoration: none;
+}

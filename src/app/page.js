@@ -14,7 +14,8 @@ export default function Home() {
         </div>
 
         <div className={styles.homebuttondiv}>
-          <button className={styles.hombutton}>Get Started</button>
+          <button className={styles.homebutton}><a href="/livechat">Get Started</a></button>
+          <button className={styles.homebutton}>See Docs!</button>
         </div>
       </div>
     </div>

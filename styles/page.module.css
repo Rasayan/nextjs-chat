@@ -77,3 +77,16 @@
 .homebutton a {
   color: black;
 }
+
+.mapzmaindiv {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#mapzmap { 
+  width: 80%;
+  height: 80vh; 
+}

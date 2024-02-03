@@ -1,6 +1,5 @@
 "use client"
 
-import dynamic from 'next/dynamic';
 import React, { useEffect, useRef, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -10,11 +9,17 @@ export default function Mapz() {
     const mapRef = useRef(null);
     const [locationInput, setLocationInput] = useState('');
     const [coordinates, setCoordinates] = useState(null);
+    const [marker, setMarker] = useState([]);
 
     useEffect(() => {
         const initializeMap = async () => {
             if (!mapRef.current) {
-                mapRef.current = L.map('mapzmap').setView([0, 0], 3);
+                mapRef.current = L.map('mapzmap', {
+                    doubleClickZoom: false,
+                    dragging: true,
+                    inertia: true,
+                    collapsed: true,                    
+                }).setView([0, 0], 3);
 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
@@ -26,10 +31,19 @@ export default function Mapz() {
     }, []);
 
     useEffect(() => {
+        if (marker) {
+            for(let i=0;i<marker.length;i++) {
+                mapRef.current.removeLayer(marker[i]);
+            }
+        }
+    }, [marker]);
+
+    useEffect(() => {
         if (coordinates && mapRef.current) {
             const { latitude, longitude } = coordinates;
             mapRef.current.setView([latitude, longitude], 15);
-            L.marker([latitude, longitude]).addTo(mapRef.current);
+            const newMarker = mapRef.current.addLayer(L.marker([latitude, longitude]));
+            setMarker(newMarker);
         }
     }, [coordinates]);
 
@@ -78,3 +92,4 @@ export default function Mapz() {
         </div>
     );
 }
+

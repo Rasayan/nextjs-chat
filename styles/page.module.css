@@ -81,12 +81,40 @@
 .mapzmaindiv {
   width: 100%;
   height: 100vh;
+  background-image: url('../public/mapwall.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
+  flex-direction: column;
+  gap: 1em;
   justify-content: center;
   align-items: center;
 }
 
-#mapzmap { 
-  width: 80%;
-  height: 80vh; 
+.mapzdiv {
+  width: 90%;
+  height: 80vh;
+}
+
+.mapz { 
+  width: 100%;
+  height: 100%;
+  border-radius: 14px; 
+}
+
+.mapzinput {
+  width: 30em;
+  height: 3em;
+  border: none;
+  outline: none;
+  border-radius: 1em 0 0 1em;
+  padding: 0 1em;
+}
+
+.mapzsubbutton {
+  width: 3em;
+  height: 3em;
+  border-radius: 0 1em 1em 0;
+  border: none;
+  outline: none;
 }

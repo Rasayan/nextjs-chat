@@ -9,6 +9,7 @@ import { FaSearch } from "react-icons/fa";
 
 export default function Mapz() {
     const mapRef = useRef(null);
+    const layerControlRef = useRef(null);
     const [locationInput, setLocationInput] = useState('');
     const [coordinates, setCoordinates] = useState(null);
     const [marker, setMarker] = useState([]);
@@ -57,6 +58,20 @@ export default function Mapz() {
             mapRef.current.setZoom(zoomLevel);
         }
     }, [zoomLevel]);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (layerControlRef.current && !layerControlRef.current.contains(event.target)) {
+                setLayerControlVisible(false);
+            }
+        };
+
+        document.body.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.body.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
 
     const handleLocationSubmit = (e) => {
         e.preventDefault();
@@ -110,13 +125,24 @@ export default function Mapz() {
             // Populate layer options when opening layer control
             setLayerOptions([
                 { name: 'Street Map', layer: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') },
-                { name: 'Satellite Map', layer: L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', { maxZoom: 20, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }) }
+                { name: 'Satellite Map', layer: L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', { maxZoom: 20, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'] }) },
+                { name: 'Terrain Map', layer: L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', { attribution: 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL.', subdomains: ['a', 'b', 'c', 'd'], minZoom: 0, maxZoom: 18 }) },
+                { name: 'Watercolor Map', layer: L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png', { attribution: 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL.', subdomains: ['a', 'b', 'c', 'd'], minZoom: 1, maxZoom: 16 }) },
+                { name: 'CartoDB Dark Map', layer: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: 'Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL.', subdomains: ['a', 'b', 'c', 'd'], maxZoom: 19 }) }
                 // Add more layer options as needed
             ]);
         }
     };
+          
 
     const handleLayerOptionClick = (layer) => {
+        // Remove all previously added base layers from the map
+        mapRef.current.eachLayer((layer) => {
+            if (layer.options && layer.options.isBaseLayer) {
+                mapRef.current.removeLayer(layer);
+            }
+        });
+
         // Add selected layer to the map
         layer.addTo(mapRef.current);
     };
@@ -141,7 +167,7 @@ export default function Mapz() {
                     <button onClick={toggleLayerControl} className={styles.layerControlButton}>
                         Layers
                     </button>
-                    <div id="layerControl" className={`${styles.layerControl} ${layerControlVisible ? styles.visible : ''}`}>
+                    <div ref={layerControlRef} id="layerControl" className={`${styles.layerControl} ${layerControlVisible ? styles.visible : ''}`}>
                         {layerOptions.map((option, index) => (
                             <div key={index} className={styles.layerOption} onClick={() => handleLayerOptionClick(option.layer)}>
                                 {option.name}
@@ -166,6 +192,4 @@ export default function Mapz() {
         </div>
     );
 }
-
-
 

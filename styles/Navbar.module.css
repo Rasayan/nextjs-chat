@@ -91,4 +91,32 @@
     .navbar-center a {
       margin: 5px 0;
     }
-  } 
+  }
+  
+  @media screen and (max-width: 420px) {
+    .navbar {
+      padding: 0 0.85em;
+    }
+
+    .navbar-container {
+      flex-direction: row;
+      padding: 9px 0;
+    }
+
+    .navbar-heading {
+      font-size: 0.8em;
+      margin-right: 1px;
+    }
+
+    .navbar-center {
+      gap: 0.5em;
+    }
+
+    .navbar-center a {
+      font-size: 0.7em;
+    }
+
+    .search-bar {
+      display: none;
+    }
+  }

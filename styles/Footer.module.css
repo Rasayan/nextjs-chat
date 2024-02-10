@@ -31,3 +31,21 @@
       flex-direction: column;
     }
   }
+
+  @media screen and (max-width: 420px) {
+    .footer {
+      padding: 6px 0;
+    }
+
+    .footerContent {
+      flex-direction: row;
+    }
+
+    .copyright {
+      font-size: 0.5em;
+    }
+    
+    .ownership {
+      font-size: 0.5em;
+    }
+  }

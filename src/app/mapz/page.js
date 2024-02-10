@@ -2,12 +2,25 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import styles from "../../../styles/page.module.css";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
+import styles from "../../../styles/page.module.css";
 
 export default function Mapz() {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    return (
+        <div className={styles.mapzmaindiv}>
+            {isClient && <MapComponent />}
+        </div>
+    );
+}
+
+function MapComponent() {
     const mapRef = useRef(null);
     const layerControlRef = useRef(null);
     const [locationInput, setLocationInput] = useState('');
@@ -16,10 +29,17 @@ export default function Mapz() {
     const [zoomLevel, setZoomLevel] = useState(3); // Initial zoom level
     const [layerControlVisible, setLayerControlVisible] = useState(false);
     const [layerOptions, setLayerOptions] = useState([]);
+    const [L, setL] = useState(null);
 
     useEffect(() => {
-        const initializeMap = async () => {
-            if (!mapRef.current) {
+        import('leaflet').then(leaflet => {
+            setL(leaflet);
+        });
+    }, []);
+
+    useEffect(() => {
+        const initializeMap = () => {
+            if (L && !mapRef.current) {
                 mapRef.current = L.map('mapz', {
                     doubleClickZoom: false,
                     dragging: true,
@@ -34,7 +54,7 @@ export default function Mapz() {
         };
 
         initializeMap();
-    }, [zoomLevel]);
+    }, [L, zoomLevel]);
 
     useEffect(() => {
         if (marker) {
@@ -119,6 +139,10 @@ export default function Mapz() {
         setZoomLevel(parseInt(value));
     };
 
+    const handleZoomChangeTouch = (event) => {
+        setZoomLevel(parseInt(event.target.value));
+    };
+
     const toggleLayerControl = () => {
         setLayerControlVisible(!layerControlVisible);
         if (!layerControlVisible) {
@@ -184,6 +208,7 @@ export default function Mapz() {
                     value={zoomLevel}
                     step="1"
                     onChange={(e) => handleZoomChange(e.target.value)}
+                    onTouchEnd={handleZoomChangeTouch}
                     className={styles.zoomSlider}
                 />
             </div>

@@ -50,7 +50,9 @@ const Navbar = () => {
             onBlur={handleSearchBlur}
             className={`${styles['search-bar']} ${isSearchActive ? styles.active : ''}`}
           />
-          <FaGithub className={styles['github-icon']} />
+          <a href='https://github.com/Rasayan/nextjs-chat'>
+            <FaGithub className={styles['github-icon']} />
+          </a>
         </div>
       </div>
     </nav>

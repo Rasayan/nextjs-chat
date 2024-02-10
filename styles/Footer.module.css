@@ -1,11 +1,12 @@
 .footer {
-    background-color: #13131388;
+    background-color: #131313;
     color: white;
     padding: 10px 0;
     text-align: center;
     position: fixed;
     width: 100%;
     bottom: 0;
+    z-index: 100;
   }
   
   .footerContent {

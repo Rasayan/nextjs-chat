@@ -1,18 +1,18 @@
 .navbar {
-    background-color: rgba(19, 19, 19, 0.5);
+    background-color: rgba(19, 19, 19, 0.9);
     position: fixed;
     top: 0;
     width: 94%;
     z-index: 1000;
     transition: background-color 0.3s ease-in-out;
-    padding: 0 4em; /* Added padding to both right and left */
+    padding: 0 4em;
   }
   
   .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0; /* Adjusted padding */
+    padding: 15px 0;
   }
   
   .navbar-left,
@@ -23,7 +23,7 @@
   }
   
   .navbar-left {
-    margin-right: 10px; /* Adjusted margin to create space between icon and heading */
+    margin-right: 10px;
     font-weight: 600;
   }
   

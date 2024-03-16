@@ -1,12 +1,12 @@
 
-import styles from "../../styles/page.module.css";
+import styles from "../../../../styles/page.module.css";
 
 export default function Home() {
   return (
     <div className={styles.main}>
       <div className={styles.homediv}>
         <div className={styles.versiondiv}>
-          <p>v0.0.1</p>
+          <p>test</p>
         </div>
         <div className={styles.homedivheads}>
           <h1 id={styles.h1home}>Tracking Directions made Easy</h1>

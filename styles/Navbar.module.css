@@ -2,10 +2,11 @@
     background-color: rgba(19, 19, 19, 0.9);
     position: fixed;
     top: 0;
-    width: 94%;
+    width: 100%;
     z-index: 1000;
     transition: background-color 0.3s ease-in-out;
     padding: 0 4em;
+    box-sizing: border-box;
   }
   
   .navbar-container {
@@ -110,6 +111,10 @@
 
     .navbar-center {
       gap: 0.5em;
+    }
+
+    .navbar-center a {
+      font-weight: bold;
     }
 
     .navbar-center a {

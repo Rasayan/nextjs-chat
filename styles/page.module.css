@@ -67,7 +67,7 @@
   height: 3em;
   padding: 1em 2em;
   border-radius: 12px;
-  border: none;
+  /* border: none; */
   outline: none;
   display: flex;
   justify-content: center;
@@ -76,6 +76,24 @@
 
 .homebutton a {
   color: black;
+}
+
+.homebutton,
+.homebutton a {
+  background: rgb(18, 18, 18);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.homebutton {
+  border: 2px rgb(124, 124, 124) solid;
+}
+
+.homebutton:hover,
+.homebutton:hover a {
+  background-color: #2f2f2f;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 /* .mapzmaindiv {
@@ -144,7 +162,7 @@
 
 .mapzinput {
   width: 40em;
-  height: 3.4em;
+  height: 2.8em;
   border: 1px solid black;
   outline: none;
   border-radius: 1em 0 0 1em;
@@ -153,7 +171,7 @@
 
 .mapzsubbutton {
   width: 3.5em;
-  height: 3.5em;
+  height: 3.0em;
   border-radius: 0 1em 1em 0;
   border: none;
   outline: none;
@@ -170,12 +188,12 @@
 
 .geolocationButton {
   width: fit-content;
-  height: 3em;
+  height: 2.5em;
   background-color: #0f0f0f;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 10px 15px;
+  border-radius: 20%;
   cursor: pointer;
   font-size: 16px;
 }
@@ -249,10 +267,11 @@
   background-color: #0e0e0e;
   color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 9px 15px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .layerControlButton:hover {
@@ -287,6 +306,17 @@
 }
 
 @media screen and (max-width: 420px) {
+  .homediv {
+    width: 100%;
+  }
+  #h1home {
+    font-size: 3em;
+  }
+
+  #h3home {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
   .mapzinput {
     width: 14em;
     height: 2em;

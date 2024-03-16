@@ -10,7 +10,7 @@ export default function Home() {
         </div>
         <div className={styles.homedivheads}>
           <h1 id={styles.h1home}>Tracking Directions made Easy</h1>
-          <h3 id={styles.h3home}>HIVEMAPPER</h3>
+          <h3 id={styles.h3home}>OSMapps</h3>
         </div>
 
         <div className={styles.homebuttondiv}>
